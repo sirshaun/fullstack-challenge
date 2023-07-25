@@ -46,3 +46,8 @@ Using Laravel and VueJS, create an application which shows the weather for a set
 - Install javascript dependencies: `npm install`
 - Run frontend: `npm run dev`
 - Visit frontend: `http://localhost:5173`
+
+
+### Testing*
+- To run tests on the frontend use `./cypress.sh`
+- To run tests on the API use `./pest.sh`
