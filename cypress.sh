@@ -2,6 +2,8 @@
 
 cd api/
 
+composer install
+
 php artisan migrate:fresh --seed
 
 cd ../frontend/
