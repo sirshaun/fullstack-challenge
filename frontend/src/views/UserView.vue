@@ -40,6 +40,6 @@ poll.start()
       <p>Sunset: {{ user['weather']['sunset'] }}</p>
     </section>
 
-    <p v-else>loading ...</p>
+    <p v-else class="placeholder">loading ...</p>
   </main>
 </template>

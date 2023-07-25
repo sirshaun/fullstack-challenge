@@ -37,6 +37,6 @@ poll.start()
       :store="userStore"
     ></user-list>
 
-    <p v-else>loading ...</p>
+    <p v-else class="placeholder">loading ...</p>
   </main>
 </template>

@@ -24,9 +24,9 @@ fetchData()
 </script>
 
 <template>
-  <div v-if="!apiResponse">Pinging the api...</div>
+  <div v-if="!apiResponse" class="placeholder">Pinging the api...</div>
 
-  <div v-if="apiResponse">
+  <div v-if="apiResponse" class="content">
     The api responded with: <br />
     <code>
       {{ apiResponse }}
