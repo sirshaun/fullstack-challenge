@@ -23,7 +23,7 @@ class FetchNewWeatherData implements ShouldQueue, ShouldBeUnique
      *
      * @var int
      */
-    public $tries = 9;
+    public $tries = 8;
 
     /**
      * Create a new job instance.
