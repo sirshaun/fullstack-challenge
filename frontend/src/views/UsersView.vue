@@ -15,28 +15,35 @@ const users = computed(() => userStore.users)
 const meta = computed(() => userStore.meta)
 const links = computed(() => userStore.links)
 const loading = computed(() => userStore.loading)
+const error = computed(() => userStore.error)
 const syncData = computed(() => poll.updateAvailable.value)
 
 userStore.fetchRecords(route.query.page, route.query)
 poll.start()
+console.log(error.value)
 </script>
 
 <template>
   <main>
-    <p v-if="syncData">
-      You are currently viewing an outdated forecase report,
-      please refresh your window to get the lastest data.
-    </p>
+    <template v-if="error">
+      <h3>{{ error }}</h3>
+    </template>
+    <template v-else>
+      <p v-if="syncData">
+        You are currently viewing an outdated forecast report,
+        please refresh your window to get the latest data.
+      </p>
 
-    <user-list
-      v-if="!loading"
-      :users="users"
-      :meta="meta"
-      :links="links"
-      :loading="loading"
-      :store="userStore"
-    ></user-list>
+      <user-list
+        v-if="!loading"
+        :users="users"
+        :meta="meta"
+        :links="links"
+        :loading="loading"
+        :store="userStore"
+      ></user-list>
 
-    <p v-else class="placeholder">loading ...</p>
+      <p v-else class="placeholder">loading ...</p>
+    </template>
   </main>
 </template>

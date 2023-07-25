@@ -21,8 +21,8 @@ poll.start()
 <template>
   <main>
     <p v-if="syncData">
-      You are currently viewing an outdated forecase report,
-      please refresh your window to get the lastest data.
+      You are currently viewing an outdated forecast report,
+      please refresh your window to get the latest data.
     </p>
 
     <section v-if="!loading">
