@@ -6,7 +6,7 @@ const state = ref({ reset: false, id: 0 })
 export function usePoll() {
   async function poll() {
     try {
-      const response = await axios.get('http://localhost:8000/weather')
+      const response = await axios.get('http://localhost/weather')
       state.value.reset = response.status === 205
     } catch (error) {
       console.log(error)

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const fetchData = async () => {
   try {
-    const url = 'http://localhost:8000/user?paginate=no'
+    const url = 'http://localhost/user?paginate=no'
     const response = await fetch(url)
     if (response.status === 502) {
       // bad gateway - show alert
