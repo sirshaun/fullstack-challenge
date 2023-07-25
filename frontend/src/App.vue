@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -7,6 +7,10 @@ import { RouterLink, RouterView } from "vue-router";
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <template v-if="$route.name === 'user'">
+          >
+          <RouterLink to="/users">Users</RouterLink>
+        </template>
       </nav>
     </div>
   </header>
@@ -14,5 +18,4 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
-
 </style>

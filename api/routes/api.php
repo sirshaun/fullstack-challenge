@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CheckWeatherForecastController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,14 +11,15 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make something great!
 |
 */
 
-Route::get('/', function () {
-    return response()->json([
-        'message' => 'all systems are a go',
-        'users' => \App\Models\User::all(),
-    ]);
+Route::get('/health', function (Request $request) {
+    return response('', 200);
 });
+
+Route::resource('user', UserController::class)->only(['index', 'show']);
+
+Route::get('weather', CheckWeatherForecastController::class);
