@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, onBeforeRouteLeave } from 'vue-router'
 
 import { useUserStore } from '@/stores/user'
 import { usePoll } from '@/functions/poll-updates'
 
+import SyncNotice from '@/components/OutdatedData.vue'
+
 const userStore = useUserStore()
 const route = useRoute()
 const poll = usePoll()
+
+onBeforeRouteLeave((from, to) => {
+  if (to.name !== 'users') poll.stop()
+})
 
 const user = computed(() => userStore.user)
 const meta = computed(() => userStore.meta)
@@ -20,10 +26,7 @@ poll.start()
 
 <template>
   <main>
-    <p v-if="syncData">
-      You are currently viewing an outdated forecast report,
-      please refresh your window to get the latest data.
-    </p>
+    <sync-notice v-if="syncData" />
 
     <section v-if="!loading">
       <h3>Weather at {{ user['coordinates'] }} for {{ user['name'] }}</h3>

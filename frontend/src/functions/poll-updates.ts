@@ -14,12 +14,17 @@ export function usePoll() {
   }
 
   const start = () => {
-    if (state.value.id === 0) state.value.id = setInterval(poll, 60000)
-    // if (state.value.id === 0) state.value.id = setInterval(poll, 300000)
+    if (state.value.id === 0) {
+      state.value.id = setInterval(poll, 150000)
+      // state.value.id = setInterval(poll, 60000)
+    }
   }
 
   const stop = () => {
-    if (state.value.id !== 0) clearInterval(state.value.id)
+    if (state.value.id !== 0) {
+      clearInterval(state.value.id)
+      state.value.id = 0
+    }
   }
 
   const updateAvailable = computed(() => state.value.reset)
